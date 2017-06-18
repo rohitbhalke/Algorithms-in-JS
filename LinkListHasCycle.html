@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+function Node(data){
+this.data = data;
+this.next = null;
+}
+
+	function hasCycle(head) {
+var c1=head,c2=head.next;
+    while(c2!=null){
+        if(c1.data==c2.data)
+         {
+            return true;   
+        }
+        c1=c1.next;
+        c2=c2.next.next;
+        
+    }
+    return false;
+}
+
+
+var a = new Node(1);
+var b = new Node(2);
+var c = new Node(3);
+
+a.next = b;
+b.next = c;
+c.next = b;
+
+var d = new Node(1);
+
+console.log(hasCycle(a));
+console.log(hasCycle(d));
+
+</script>
+</body>
+</html>

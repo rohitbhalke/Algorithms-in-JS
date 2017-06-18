@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+var a = [5,3,17,10,84,19,6,22,1]
+var leafStartIndex = parseInt(a.length/2);
+
+function swap(a,i,right){
+	var temp = a[i];
+	a[i] = a[right];
+	a[right] = temp; 
+}
+
+function maxHeapify(a,i,l){
+	var left,right;
+	left = i*2+1;
+	right = i*2+2;
+	if(a[left]==undefined && a[right]==undefined)
+		return;
+	if(a[left]==undefined){
+		if(a[right]<=a[i]){
+			return;
+		}
+		else {
+			swap(a,i,right);
+			maxHeapify(a,right);
+		}
+	}
+	if(a[right]==undefined){
+		if(a[left]<=a[i]){
+			return;
+		}
+		else {
+			swap(a,i,left);
+			maxHeapify(a,left);
+		}
+	}
+	else if(a[i]>a[left] && a[i]>a[right]){
+		return;
+	}
+	else{
+		var max = Math.max(a[left],a[right]);
+		if(max==a[left]){
+		swap(a,i,left);
+		maxHeapify(a,left);
+		}
+		else{
+			swap(a,i,right);
+			maxHeapify(a,right);
+		}
+	}
+}
+
+var newArr = [];
+function heapSort(a,length){
+	while(a.length>0){
+		swap(a,0,a.length-1);
+		newArr.unshift(a.pop());
+		var leafStartIndex = parseInt(a.length/2)-1;
+		//maxHeapify(a,leafStartIndex,length);
+		dos(a,leafStartIndex);
+	}
+}
+
+function dos(a,leafStartIndex){
+for(var i=leafStartIndex;i>=0;i--)
+maxHeapify(a,i,a.length);
+}
+dos(a,leafStartIndex);
+
+console.log(a);
+heapSort(a,length);
+console.log(newArr);
+console.log(a);
+
+</script>
+</body>
+</html>

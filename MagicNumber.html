@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+// http://www.geeksforgeeks.org/find-nth-magic-number/
+
+	function magicNumber(k,no){
+		var stack =[];
+		while(k!==0){
+			var mod = k%2;
+			k = parseInt(k/2);
+			stack.push(mod);
+		}	
+		console.log(stack);
+		stack.forEach(function(elm, indx){
+			no += elm * Math.pow(5,indx+1);	
+		});
+		console.log(no);
+	}
+
+	console.log(magicNumber(5,0));
+	console.log(magicNumber(1,0));
+	console.log(magicNumber(2,0));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//Write you own Power without using multiplication(*) and division(/) operators
+	//http://www.geeksforgeeks.org/write-you-own-power-without-using-multiplication-and-division/
+
+function multiply(num,times){
+if(times)
+	return num + (multiply(num,times-1));
+else 
+	return 0;
+}
+
+
+function power(a,b)	{
+
+if(b)
+	return multiply(a, power(a,b-1));
+else
+	return 1;
+
+
+}
+
+console.log(power(5,3))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//Find subarray with given sum | Set 1 (Nonnegative Numbers)
+	//http://www.geeksforgeeks.org/find-subarray-with-given-sum/
+
+//Input: arr[] = {1, 4, 20, 3, 10, 5}, sum = 33
+// Ouptut: Sum found between indexes 2 and 4
+
+// Input: arr[] = {1, 4, 0, 0, 3, 10, 5}, sum = 7
+// Ouptut: Sum found between indexes 1 and 4
+
+// Input: arr[] = {1, 4}, sum = 0
+// Output: No subarray found
+
+function printSubarray(arr, sum){
+
+var tillSum=arr[0], start = 0, flag=0,visited = false;
+for(var i=1;i<arr.length;i++){
+
+while(tillSum > sum && start<i){
+tillSum -= arr[start];
+start++;
+}
+
+if(tillSum === sum && visited){
+	console.log(start,--i);
+return;
+}
+visited = true;
+tillSum += arr[i];
+}
+
+console.log("NON");
+}
+
+printSubarray([1, 4, 20, 3, 10, 5],33);
+printSubarray([1, 4, 0, 0, 3, 10, 5],7);
+printSubarray([1, 4],0);
+printSubarray([1, 4,0],0);
+printSubarray([1, 4,0,5,6,7,8],13);
+
+
+</script>
+</body>
+</html>

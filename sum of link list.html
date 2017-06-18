@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var ll = function(data){
+		this.data = data;
+		this.next = null;
+	}
+
+var a = new ll(5);
+var b = new ll(6);
+var c = new ll(4);
+var z = new ll(9);
+
+var d = new ll(8);
+var e = new ll(4);
+var f = new ll(7);
+var y = new ll(8);
+
+a.next = b;
+b.next = c;
+c.next = z;
+
+d.next = e;
+e.next = f;
+
+
+var carry = {
+	num : 0
+}
+
+function getLength(head,length){
+	if(head==null)
+		return length;
+	return getLength(head.next,length+1);
+}
+
+
+function makeSameSize(head,currentLength,desiredLength){
+while(currentLength!=desiredLength){
+	var newNode = new ll(0);
+	newNode.next = head;
+	head = newNode;
+	currentLength++;
+}
+return head;
+}
+
+function sum(head1, head2){
+if(head1==null && head2==null)
+	return null;
+
+var result = new ll();
+
+result.next = sum(head1.next, head2.next, carry.num);
+
+var sums = head1.data + head2.data + carry.num;
+carry.num = parseInt(sums/10);
+sums = sums % 10;
+
+result.data  = sums;
+
+return result;
+}
+
+var length1 = getLength(a,0);
+var length2 = getLength(d,0);
+
+if(length1>length2){
+// means add empty nodes to second ll
+d = makeSameSize(d,length2,length1);
+}
+else if(length1<length2) {
+// means add empty nodes to first ll
+a = makeSameSize(a,length1,length2);
+}
+console.log("length of first",getLength(a,0));
+console.log("length of second",getLength(d,0));
+
+var r = sum(a,d);
+if(carry.num){
+	var head = new ll(carry.num);
+	head.next = r;
+	r = head;
+}
+console.log(r);
+
+</script>
+</body>
+</html>

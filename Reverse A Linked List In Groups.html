@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//Reverse a Linked List in groups of given size
+	//http://www.geeksforgeeks.org/reverse-a-list-in-groups-of-given-size/
+var ll = function(data){
+		this.data = data;
+		this.next = null;
+	}
+
+var a = new ll(1);
+var b = new ll(2);
+var c = new ll(3);
+var z = new ll(4);
+
+var d = new ll(5);
+var e = new ll(6);
+var f = new ll(7);
+var y = new ll(8);
+var h = new ll(9);
+
+a.next = b;
+b.next = c;
+c.next = z;
+z.next = d;
+d.next = e;
+e.next = f;
+f.next = y;
+y.next = h;
+
+function reverse(head, group){
+	var prev=null,temp=head,itr=head,groupCopy=group;
+	if(head == null)
+		return head;
+	while(group && head){
+		head = head.next;
+		temp.next = prev;
+		prev= temp;
+		temp = head;
+		group--;
+	}
+
+itr.next = reverse(head,groupCopy);
+return prev;
+}
+console.log(a)
+console.log(reverse(a,3));
+</script>
+</body>
+</html>

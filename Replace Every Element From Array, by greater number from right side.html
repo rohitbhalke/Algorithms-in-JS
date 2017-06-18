@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//http://www.geeksforgeeks.org/replace-every-element-with-the-greatest-on-right-side/
+
+
+function replace(arr){
+	var max = arr[arr.length-1], length=arr.length-1;
+	arr[arr.length-1] = -1;
+	for(var i=length-1;i>=0;i--){
+		var temp = arr[i];
+		arr[i] = max;
+		max = max<temp ? temp : max;
+	}
+	console.log(arr);
+}
+
+var a = [16,17,4,3,5,2];	
+replace(a);
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+var Tree = function(data){
+	this.data = data;
+	this.left = null;
+	this.right= null;
+}	
+
+var one = new Tree('1');
+var three = new Tree('3');
+var two = new Tree('2');
+var five = new Tree('5');
+var four = new Tree('4');
+
+
+one.left = three;
+one.right = two;
+two.left = five;
+two.right = four;
+
+
+
+function mirror(node){
+if(node === null)
+	return;
+
+
+	var newNode = new Tree(node.data);
+
+
+
+	newNode.right = mirror(node.left);
+
+
+
+	newNode.left = mirror(node.right);
+
+
+return newNode;
+}
+
+var newTree =  mirror(one);;
+console.log(newTree);
+
+
+</script>
+</body>
+</html>

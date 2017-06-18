@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+function Tree(val){
+	this.data = val;
+	this.left = null;
+	this.right = null;
+}
+
+var one = new Tree('1');
+var three = new Tree('3');
+var two = new Tree('2');
+var five = new Tree('5');
+var four = new Tree('4');
+var six = new Tree('6');
+var seven = new Tree('7');
+
+one.left = two;
+one.right = three;
+two.left = four;
+two.right = five;
+three.left = six;
+three.right = seven;
+
+
+var path = [];
+
+/*
+Start from the root and com­pare it with x, if matched then we have found the node.
+Else go left and right.
+Recur­sively do step 2 and 3 till you find the node x.
+Now when you have found the node, stop the recursion.
+Now while going back to the root while back track­ing, store the node val­ues in the ArrayList.
+Reverse the ArrayList and print it.
+*/
+
+function findPath(head, val) {
+
+if(head==null)
+	return false;
+
+if(head.data == val || findPath(head.left,val) || findPath(head.right,val)){
+	path.unshift(head.data);
+	return true;
+}
+return false;
+
+}
+
+
+findPath(one,'5')
+console.log(path);
+
+
+</script>
+</body>
+</html>

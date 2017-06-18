@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+var tree = function(data){
+	this.data = data;
+	this.left = null;
+	this.right= null;
+}	
+
+var tree1 = new tree('x');
+var a = new tree('a');
+var b = new tree('b');
+var c = new tree('c');
+
+tree1.left = a;
+tree1.right = b;
+a.right = c;
+
+var tree2 = new tree('z');
+var x = new tree('x');
+var a1 = new tree('a');
+var b1 = new tree('b');
+var c1 = new tree('c');
+var e = new tree('e');
+var k = new tree('k');
+
+tree2.left = x;
+tree2.right = e;
+e.right = k;
+x.left = a1;
+x.right = b1;
+a1.right = c1;
+
+
+
+
+function helper(node1, node2){
+	
+
+/*
+"A subtree of a tree T is a tree S consisting of a node in T and all of its descendants in T."
+*/
+	if(node2==null && node1==null)
+		return true;
+	if(node2==null || node1==null)
+		return false;
+	if(node1.data!==node2.data)
+		return false;
+	return node1.data==node2.data && helper(node1.left,node2.left) && helper(node1.right,node2.right)
+}
+
+function isSubtree(node1, node2){
+
+if(node2 == null)
+	return true;
+
+if(node1 == null)
+	return false;
+
+if(helper(node1,node2))
+	return true;
+
+return isSubtree(node1.left,node2) ||  isSubtree(node1.right,node2);
+
+}
+
+console.log(isSubtree(tree2,tree1));
+
+</script>
+</body>
+</html>

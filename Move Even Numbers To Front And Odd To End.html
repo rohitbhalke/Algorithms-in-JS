@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//Given a singly linked list, write a function to put all the even numbers at the front and odd numbers at the end of ll while maintaining the order of numbers. In place solution was expected
+
+
+var ll = function(data){
+		this.data = data;
+		this.next = null;
+	}
+
+
+function move(head){
+	var evenHead, oddHead, oddLast, evenLast;
+	while(head){
+		if(head.data % 2 ==0){
+			if(!evenHead){
+				evenHead = head;
+				evenLast = head;
+			}
+			else {
+				evenLast.next = head;
+				evenLast = head;	
+			}
+		}
+		if(head.data % 2 ==1){
+			if(!oddHead){
+				oddHead = head;
+				oddLast = head;
+			}
+			else {
+				oddLast.next = head;
+				oddLast = head;	
+			}
+		}
+		head = head.next;
+	}
+	if(evenHead){
+		evenLast.next = oddHead;
+	}
+	return evenHead;
+}
+
+
+var a = new ll(1);
+var b = new ll(2);
+var c = new ll(3);
+var d = new ll(4);
+var e = new ll(5);
+// 2 3 4 5 1
+// 2 4 5 1 3
+// 2 4 5 1 3
+// 2 4 1 3 5
+// 2 4 5 1 3
+// 50    45 1 23 3
+// 50 1 23 3 45
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+
+console.log("ans is",move(a));
+
+</script>
+</body>
+</html>

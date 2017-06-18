@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var Tree = function(data){
+	this.data = data;
+	this.left = null;
+	this.right= null;
+}	
+
+var ten = new Tree('10');
+var eight = new Tree('8');
+var two = new Tree('2');
+var five = new Tree('5');
+var three = new Tree('3');
+var twoC = new Tree('2');
+
+ten.left = eight;
+eight.left = three;
+eight.right = five;
+ten.right = two;
+two.left = twoC;
+
+function check(root){
+
+if(!root){
+	return true;
+}
+if(root.left==null && root.right==null)
+return true;
+
+var ans=0;
+if(root.left)
+ans += parseInt(root.left.data);
+
+if(root.right)
+ans+= parseInt(root.right.data);
+
+if(ans!=parseInt(root.data))
+	return false;
+
+return check(root.left) && check(root.right);
+};
+
+console.log(check(ten));
+
+</script>
+</body>
+</html>

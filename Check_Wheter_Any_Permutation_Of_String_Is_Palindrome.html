@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+function isPalindromePossible(str){
+    var map={};
+    for(var i=0;i<str.length;i++){
+        if(!map[str[i]])
+            map[str[i]] = 1;
+        else
+            map[str[i]] = map[str[i]]+1;
+    }
+
+    var odd = false, noOfOdds = 0;
+
+    for(var key in map){
+        if(map.hasOwnProperty(key)){
+            if(map[key]%2===1){
+                noOfOdds++;
+            }
+            if(noOfOdds>1){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+console.log(isPalindromePossible('kayakp'));
+</script>
+</body>
+</html>

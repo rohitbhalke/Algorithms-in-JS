@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var tree = function(data){
+		this.data = data;
+		this.left = null;
+		this.right = null;
+	}
+
+// This is for finding the minimum value from binary tree, not BST
+
+
+var root = new tree(15);
+var ten = new tree(10);
+var twenty = new tree(20);
+var eight = new tree(8);
+var twelve = new tree(12);
+var seventeen = new tree(17);
+var twentyfive = new tree(25);
+
+root.left = ten;
+root.right = twenty;
+
+ten.left= eight;
+//ten.right=twelve;
+
+twenty.left = seventeen;
+twenty.right = twentyfive;
+
+function findMin(root){
+
+	if(root === null){
+		return 100000000; 
+	}
+	if(root.left===null && root.right==null){
+		return root.data;
+	}
+	return Math.min(findMin(root.right), findMin(root.left));
+
+};
+
+console.log(findMin(root));
+
+</script>
+</body>
+</html>

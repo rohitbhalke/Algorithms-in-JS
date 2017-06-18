@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var Tree = function(data){
+	this.data = data;
+	this.left = null;
+	this.right= null;
+}	
+
+var one = new Tree('1');
+var two = new Tree("2");
+var three = new Tree("3");
+var four = new Tree("4");
+var five = new Tree("5");
+var six = new Tree("6");
+var seven = new Tree("7");
+var e = new Tree("8");
+var n = new Tree("9");
+var t = new Tree("10");
+
+one.left = two;
+one.right = three;
+two.left = four;
+two.right = five;
+three.right = six;
+four.left = seven;
+four.right = e;
+six.left = n;
+six.right = t;
+
+function is(node){
+	if(node==null)
+		return false;
+	if(node.left==null && node.right==null)
+		return true;
+	return false;
+}
+
+function extract(root){
+if(root==null)
+	return;
+root.left = is(root.left) ? null : root.left;
+root.right = is(root.right) ? null : root.right;
+extract(root.left);
+extract(root.right);
+}
+extract(one);
+console.log(one);
+
+</script>
+</body>
+</html>
